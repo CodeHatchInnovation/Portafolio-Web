@@ -125,6 +125,7 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Necesario para posicionar el menú móvil */
 }
 
 .site-title {
@@ -134,11 +135,16 @@ header .container {
     font-weight: 700;
 }
 
+/* Desktop Navigation (default) */
+nav {
+    display: block; /* Asegura que nav es un bloque por defecto */
+}
+
 nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: flex;
+    display: flex; /* Siempre flex para escritorio */
 }
 
 nav ul li {
@@ -167,6 +173,18 @@ nav ul li a:hover::after {
     width: 100%;
 }
 
+/* Hamburger Menu Toggle Button (hidden by default on desktop) */
+.hamburger-menu-toggle {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    font-size: 2em; /* Tamaño del icono */
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 0;
+}
+
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -174,7 +192,7 @@ nav ul li a:hover::after {
     align-items: center;
     justify-content: center;
     text-align: left;
-    padding-top: 80px;
+    padding-top: 80px; /* Ajusta por el header fijo */
 }
 
 .hero .container {
@@ -463,7 +481,7 @@ nav ul li a:hover::after {
     font-size: 1.05em;
 }
 
-/* Projects Section - Re-enabled Swiper for Carousel */
+/* Projects Section - Swiper Slider */
 #projects .container {
     padding: 0 20px;
     max-width: 1200px;
@@ -473,14 +491,15 @@ nav ul li a:hover::after {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding-bottom: 40px; /* Space for pagination dots */
+    padding-bottom: 50px; /* Espacio para los puntos de paginación */
     position: relative;
-    overflow: hidden; /* Important for slider behavior */
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    background-color: transparent;
 }
 
 .swiper-wrapper {
-    display: flex; /* Revert to flex for Swiper */
-    /* Remove grid properties, Swiper handles positioning and spacing */
+    display: flex; /* Swiper maneja esto */
 }
 
 .swiper-slide {
@@ -492,9 +511,9 @@ nav ul li a:hover::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    min-height: 400px; /* Altura mínima para consistencia */
+    min-height: 400px;
     height: auto;
-    max-height: 550px; /* Altura máxima para evitar desproporciones */
+    max-height: 550px;
     transition: transform 0.3s ease;
 }
 
@@ -502,7 +521,6 @@ nav ul li a:hover::after {
     transform: translateY(-5px);
 }
 
-/* Asegurar que los colores internos no cambien al hover */
 .swiper-slide:hover h3,
 .swiper-slide:hover p,
 .swiper-slide:hover .language-badge {
@@ -566,57 +584,44 @@ nav ul li a:hover::after {
     gap: 10px;
 }
 
-/* Estilos para los botones de navegación de Swiper */
-.swiper-button-next,
-.swiper-button-prev {
-    color: var(--primary-color); /* Color de los iconos */
-    font-size: 2em; /* Tamaño de los iconos */
-    width: 50px; /* Ancho del botón */
-    height: 50px; /* Alto del botón */
-    margin-top: -25px; /* Centrar verticalmente */
-    display: flex; /* Asegura que sean flexibles para alinear el icono */
-    align-items: center; /* Centrar icono */
-    justify-content: center; /* Centrar icono */
-    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
-    border-radius: 50%; /* Hacerlos circulares */
-    box-shadow: var(--box-shadow); /* Sombra para destacarlos */
+/* Swiper navigation buttons - Re-enabled and styled */
+.swiper-button-prev,
+.swiper-button-next {
+    display: block; /* Visibles */
+    color: var(--primary-color);
+    font-size: 2em; /* Tamaño del icono */
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    box-shadow: var(--box-shadow);
     transition: background-color 0.3s ease, color 0.3s ease;
-    z-index: 10; /* Asegurar que estén sobre los slides */
 }
 
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
     background-color: var(--accent-color);
     color: var(--background-color);
 }
 
-.swiper-button-prev {
-    left: 10px; /* Posicionar a la izquierda */
-}
-
-.swiper-button-next {
-    right: 10px; /* Posicionar a la derecha */
-}
-
-/* Estilos para la paginación de Swiper (los puntos) */
+/* Swiper pagination dots - Re-enabled and styled */
 .swiper-pagination {
+    display: block; /* Visibles */
     position: absolute;
-    bottom: 10px; /* Posición inferior */
-    left: 0;
-    width: 100%;
-    text-align: center;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
-    display: block; /* Asegurarse de que sea visible */
 }
 
 .swiper-pagination-bullet {
-    background: var(--primary-color); /* Color de los puntos inactivos */
-    opacity: 0.5;
-    transition: opacity 0.3s ease, background-color 0.3s ease;
+    background: var(--light-text-color); /* Color de puntos inactivos */
+    opacity: 0.7;
+    margin: 0 4px !important;
 }
 
 .swiper-pagination-bullet-active {
-    background: var(--accent-color); /* Color de los puntos activos */
+    background: var(--accent-color); /* Color de punto activo */
     opacity: 1;
 }
 
@@ -699,10 +704,9 @@ footer {
     align-items: center;
 }
 
-/* Asegurar que el modal-dialog de Bootstrap sea visible */
 .modal-dialog {
-    margin: 1.75rem auto; /* Bootstrap default */
-    transform: none; /* Override potential Bootstrap transforms */
+    margin: 1.75rem auto;
+    transform: none;
 }
 
 .modal-content {
@@ -945,20 +949,69 @@ footer {
 }
 
 @media (max-width: 768px) {
+    /* Header - Mobile */
     header .container {
-        flex-direction: column;
+        flex-direction: row; /* Mantener los elementos en fila */
+        justify-content: space-between; /* Espacio entre título y hamburguesa */
+    }
+
+    /* Mostrar icono de hamburguesa */
+    .hamburger-menu-toggle {
+        display: block; /* Muestra el botón de hamburguesa en pantallas pequeñas */
+    }
+
+    /* Ocultar navegación de escritorio */
+    nav#main-nav { /* Aplicamos estilos a la navegación con ID main-nav */
+        position: absolute; /* Posiciona el menú móvil */
+        top: 100%; /* Debajo del encabezado */
+        left: 0;
+        width: 100%;
+        background-color: var(--primary-color); /* Fondo para el menú móvil */
+        box-shadow: var(--box-shadow);
+        overflow: hidden; /* Oculta el desbordamiento cuando está cerrado */
+        max-height: 0; /* Inicialmente oculto */
+        transition: max-height 0.4s ease-in-out; /* Transición suave */
+        flex-direction: column; /* Apila los elementos verticalmente */
+        z-index: 999; /* Debajo del encabezado fijo pero encima del contenido */
+    }
+
+    /* Estilo para navegación abierta */
+    nav#main-nav.open { /* Clase 'open' que JavaScript toggleará */
+        max-height: 300px; /* Altura máxima cuando está abierto, ajusta según sea necesario */
+    }
+
+    nav#main-nav ul {
+        flex-direction: column; /* Apila los elementos del menú verticalmente */
+        width: 100%;
+        padding: 10px 0;
+    }
+
+    nav#main-nav ul li {
+        margin: 0; /* Elimina margen horizontal */
+        width: 100%;
         text-align: center;
+        padding: 10px 0; /* Más padding para los enlaces */
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separador */
     }
 
-    nav ul {
-        margin-top: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+    nav#main-nav ul li:last-child {
+        border-bottom: none; /* Sin borde en el último elemento */
     }
 
-    nav ul li {
-        margin: 0 15px 10px;
+    nav#main-nav ul li a {
+        display: block; /* Hace que los enlaces ocupen todo el ancho */
+        padding: 10px 20px;
+        color: var(--background-color); /* Color de texto blanco sobre fondo oscuro */
     }
+
+    nav#main-nav ul li a:hover {
+        background-color: var(--accent-color); /* Fondo al pasar el ratón */
+    }
+
+    nav#main-nav ul li a::after {
+        display: none; /* Oculta la línea de hover del escritorio */
+    }
+
 
     .hero .container {
         flex-direction: column-reverse;
@@ -991,6 +1044,14 @@ footer {
         max-width: 100%;
     }
 
+    /* Swiper navigation in mobile */
+    .swiper-button-prev,
+    .swiper-button-next {
+        font-size: 1.5em; /* Flechas más pequeñas */
+        width: 30px;
+        height: 30px;
+    }
+
     .modal-content {
         padding: 25px;
         width: 95%;
@@ -998,12 +1059,6 @@ footer {
 
     .modal-images {
         grid-template-columns: 1fr;
-    }
-
-    /* Ocultar botones de navegación de Swiper en pantallas pequeñas si no se desean */
-    .swiper-button-prev,
-    .swiper-button-next {
-        display: none !important;
     }
 }
 
