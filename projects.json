@@ -1,0 +1,52 @@
+{
+    "projects": [
+        {
+            "id": "1",
+            "title": "Sistema de Gestión de Clientes",
+            "short_description": "Aplicación web para la administración de datos de clientes, historial de compras y seguimiento de interacciones.",
+            "long_description": "Este proyecto es un sistema CRUD (Crear, Leer, Actualizar, Borrar) completo para gestionar una base de datos de clientes. Desarrollado con PHP para el backend y MySQL como base de datos, ofrece una interfaz de usuario intuitiva construida con HTML, CSS y JavaScript. Permite a los usuarios añadir nuevos clientes, buscar existentes, actualizar su información y eliminar registros. La seguridad básica de formularios y la validación de entrada están implementadas para garantizar la integridad de los datos.",
+            "thumbnail": "images/project1-thumb.jpg",
+            "images": [
+                "images/project1-full1.jpg",
+                "images/project1-full2.jpg"
+            ],
+            "languages": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"]
+        },
+        {
+            "id": "2",
+            "title": "Aplicación de Recetas Android",
+            "short_description": "Aplicación móvil nativa para Android que permite a los usuarios buscar y guardar sus recetas favoritas.",
+            "long_description": "Desarrollada en Android Studio con Java, esta aplicación móvil permite a los usuarios explorar una colección de recetas. Utiliza SQLite para el almacenamiento local de datos, permitiendo guardar recetas favoritas sin conexión. La interfaz de usuario es amigable y responde a diferentes tamaños de pantalla. Incluye funcionalidades de búsqueda por nombre de receta y categorías, y una vista detallada para cada receta con ingredientes e instrucciones.",
+            "thumbnail": "images/project2-thumb.jpg",
+            "images": [
+                "images/project2-full1.jpg",
+                "images/project2-full2.jpg",
+                "images/project2-full3.jpg"
+            ],
+            "languages": ["Java", "Android Studio", "SQLite", "XML"]
+        },
+        {
+            "id": "3",
+            "title": "Portafolio Personal (Este mismo)",
+            "short_description": "Este portafolio interactivo, diseñado para mostrar mis habilidades y proyectos de desarrollo web.",
+            "long_description": "Este es el código fuente del portafolio que estás viendo ahora mismo. Ha sido construido con un enfoque en la elegancia, la simplicidad y la capacidad de respuesta. Utiliza HTML semántico, CSS moderno para un diseño atractivo y JavaScript para la interactividad, incluyendo el carrusel de proyectos con Swiper.js y un modal de detalles para cada proyecto. Es una demostración de mis habilidades en frontend y de mi capacidad para integrar librerías de terceros.",
+            "thumbnail": "images/project3-thumb.jpg",
+            "images": [
+                "images/project3-full1.jpg",
+                "images/project3-full2.jpg"
+            ],
+            "languages": ["HTML", "CSS", "JavaScript", "Swiper.js"]
+        },
+        {
+            "id": "4",
+            "title": "Script de Automatización de Redes",
+            "short_description": "Script en Python para automatizar la configuración básica de dispositivos de red Cisco.",
+            "long_description": "Este script de Python utiliza la librería 'Netmiko' para conectarse a dispositivos de red Cisco (routers y switches) a través de SSH y ejecutar comandos de configuración predefinidos. Es una herramienta útil para la automatización de tareas repetitivas como la configuración de VLANs, interfaces o la recopilación de información de diagnóstico. Demuestra mi capacidad para trabajar con Python en el ámbito de la administración de sistemas y redes.",
+            "thumbnail": "images/project4-thumb.jpg",
+            "images": [
+                "images/project4-full1.jpg"
+            ],
+            "languages": ["Python", "Netmiko", "Redes Cisco"]
+        }
+    ]
+}

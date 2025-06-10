@@ -1,0 +1,1044 @@
+/* Variables CSS */
+:root {
+    --primary-color: #1E3A8A;     /* Azul marino suave (detalles, botones) */
+    --secondary-color: #374151;    /* Gris carbón (bordes, iconos) */
+    --background-color: #FFFFFF;  /* Blanco puro (Fondo principal) */
+    --light-background: #F3F4F6;  /* Gris muy claro (Fondo alternativo) */
+    --accent-color: #60A5FA;      /* Azul cielo (Accento) */
+    --text-color: #111827;        /* Gris oscuro (Texto principal) */
+    --light-text-color: #4B5563;  /* Gris medio para texto secundario */
+
+    --font-inter: 'Inter', sans-serif;
+    --font-work-sans: 'Work Sans', sans-serif;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* Estilos Generales */
+body {
+    font-family: var(--font-work-sans);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-inter);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    margin: 10px auto 0;
+}
+
+p {
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: var(--border-radius);
+    text-transform: uppercase;
+    font-weight: bold;
+    margin: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    border: 2px solid;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    transform: translateY(-3px);
+}
+
+/* Header */
+header {
+    background-color: var(--background-color);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: var(--box-shadow);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-title {
+    font-family: var(--font-inter);
+    font-size: 1.8em;
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 30px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    font-weight: 400;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    padding-top: 80px;
+}
+
+.hero .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-content .greeting {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    color: var(--text-color);
+    margin-bottom: 20px;
+}
+
+.hero-content .tagline {
+    font-size: 1.5em;
+    color: var(--light-text-color);
+    margin-bottom: 30px;
+}
+
+.hero-content .tagline .highlight {
+    color: var(--accent-color);
+}
+
+.hero-buttons {
+    margin-top: 30px;
+}
+
+.hero-image {
+    flex: 0 0 auto;
+    text-align: center;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--accent-color);
+    box-shadow: var(--box-shadow);
+}
+
+/* About Section */
+.about-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px;
+    max-width: 700px;
+}
+
+.about-info-cards {
+    flex: 1;
+    min-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-card {
+    background-color: var(--light-background);
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.info-card:hover h3,
+.info-card:hover i {
+    color: var(--background-color);
+}
+
+.info-card i {
+    font-size: 2.5em;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.info-card h3 {
+    color: var(--text-color);
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.info-card p {
+    color: var(--light-text-color);
+    font-size: 0.95em;
+}
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    text-align: left;
+}
+
+.skill-category {
+    background-color: var(--light-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.skill-category:hover h3,
+.skill-category:hover h3 i,
+.skill-category:hover ul li,
+.skill-category:hover ul li::before {
+    color: var(--background-color);
+}
+
+.skill-category h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.skill-category h3 i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.skill-category ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-category ul li {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1.05em;
+}
+
+.skill-category ul li::before {
+    content: '\2022';
+    color: var(--accent-color);
+    font-weight: bold;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+/* Education Section */
+.education-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.education-card {
+    background-color: var(--light-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: left;
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.education-card:hover h3,
+.education-card:hover h3 i,
+.education-card:hover p,
+.education-card:hover p b {
+    color: var(--background-color);
+}
+
+.education-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.education-card h3 i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.education-card p {
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-size: 1.05em;
+}
+
+.education-card p b {
+    color: var(--primary-color);
+}
+
+/* Languages Section */
+.language-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.language-card {
+    background-color: var(--light-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+    max-width: 30%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.language-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.language-card:hover h3,
+.language-card:hover h3 i,
+.language-card:hover p {
+    color: var(--background-color);
+}
+
+.language-card h3 {
+    color: var(--primary-color);
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.language-card h3 i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.language-card p {
+    color: var(--text-color);
+    font-size: 1.05em;
+}
+
+/* Projects Section - Re-enabled Swiper for Carousel */
+#projects .container {
+    padding: 0 20px;
+    max-width: 1200px;
+}
+
+.swiper-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 40px; /* Space for pagination dots */
+    position: relative;
+    overflow: hidden; /* Important for slider behavior */
+}
+
+.swiper-wrapper {
+    display: flex; /* Revert to flex for Swiper */
+    /* Remove grid properties, Swiper handles positioning and spacing */
+}
+
+.swiper-slide {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 400px; /* Altura mínima para consistencia */
+    height: auto;
+    max-height: 550px; /* Altura máxima para evitar desproporciones */
+    transition: transform 0.3s ease;
+}
+
+.swiper-slide:hover {
+    transform: translateY(-5px);
+}
+
+/* Asegurar que los colores internos no cambien al hover */
+.swiper-slide:hover h3,
+.swiper-slide:hover p,
+.swiper-slide:hover .language-badge {
+    color: inherit;
+    background-color: inherit;
+    border-color: inherit;
+}
+
+.project-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+}
+
+.project-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.project-details h3 {
+    color: var(--primary-color);
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.project-details p {
+    color: var(--light-text-color);
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex-grow: 1;
+}
+
+.project-languages {
+    margin-top: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.language-badge {
+    background-color: var(--light-background);
+    color: var(--text-color);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    border: 1px solid var(--secondary-color);
+}
+
+.project-links {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Estilos para los botones de navegación de Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+    color: var(--primary-color); /* Color de los iconos */
+    font-size: 2em; /* Tamaño de los iconos */
+    width: 50px; /* Ancho del botón */
+    height: 50px; /* Alto del botón */
+    margin-top: -25px; /* Centrar verticalmente */
+    display: flex; /* Asegura que sean flexibles para alinear el icono */
+    align-items: center; /* Centrar icono */
+    justify-content: center; /* Centrar icono */
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+    border-radius: 50%; /* Hacerlos circulares */
+    box-shadow: var(--box-shadow); /* Sombra para destacarlos */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    z-index: 10; /* Asegurar que estén sobre los slides */
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.swiper-button-prev {
+    left: 10px; /* Posicionar a la izquierda */
+}
+
+.swiper-button-next {
+    right: 10px; /* Posicionar a la derecha */
+}
+
+/* Estilos para la paginación de Swiper (los puntos) */
+.swiper-pagination {
+    position: absolute;
+    bottom: 10px; /* Posición inferior */
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 10;
+    display: block; /* Asegurarse de que sea visible */
+}
+
+.swiper-pagination-bullet {
+    background: var(--primary-color); /* Color de los puntos inactivos */
+    opacity: 0.5;
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--accent-color); /* Color de los puntos activos */
+    opacity: 1;
+}
+
+
+/* Contact Section */
+.contact-intro {
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    color: var(--text-color);
+}
+
+.contact-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.contact-card {
+    background-color: var(--light-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+    color: var(--background-color);
+}
+
+.contact-card:hover h3,
+.contact-card:hover i,
+.contact-card:hover p {
+    color: var(--background-color);
+}
+
+.contact-card i {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.contact-card h3 {
+    color: var(--text-color);
+    font-size: 1.6em;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    color: var(--light-text-color);
+    font-size: 1em;
+    margin-bottom: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9em;
+    margin-top: 50px;
+}
+
+/* Modal de Proyectos (Estilos para el modal de Bootstrap) */
+.modal {
+    display: none; /* Bootstrap ya maneja esto con sus clases */
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+/* Asegurar que el modal-dialog de Bootstrap sea visible */
+.modal-dialog {
+    margin: 1.75rem auto; /* Bootstrap default */
+    transform: none; /* Override potential Bootstrap transforms */
+}
+
+.modal-content {
+    background-color: var(--background-color);
+    margin: auto;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    color: var(--text-color);
+    text-align: left;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 2em;
+}
+
+.modal-content p {
+    color: var(--light-text-color);
+    margin-bottom: 10px;
+}
+
+#modal-languages {
+    font-style: italic;
+    font-size: 0.9em;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+}
+
+.modal-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.modal-images img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.modal-content .btn {
+    margin-top: 25px;
+    display: inline-block;
+}
+
+.close-button {
+    color: var(--light-text-color);
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+/* Chatbot styles */
+.chatbot-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.chatbot-toggle-button {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease;
+}
+
+.chatbot-toggle-button:hover {
+    transform: scale(1.1);
+}
+
+.chatbot-window {
+    background-color: var(--light-background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 320px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+.chatbot-window.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.chatbot-header {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    padding: 15px;
+    border-top-left-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-header h3 {
+    margin: 0;
+    color: var(--background-color);
+    font-size: 1.1em;
+}
+
+.chatbot-close-button {
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    font-size: 1.5em;
+    cursor: pointer;
+    padding: 0;
+}
+
+.chatbot-close-button:hover {
+    color: var(--text-color);
+}
+
+.chatbot-body {
+    flex-grow: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background-color: var(--background-color);
+    border-bottom: 1px solid var(--light-background);
+}
+
+.chat-message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    align-self: flex-end;
+    margin-left: auto;
+}
+
+.bot-message {
+    background-color: var(--light-background);
+    color: var(--text-color);
+    align-self: flex-start;
+}
+
+.chatbot-footer {
+    display: flex;
+    padding: 10px 15px;
+    background-color: var(--primary-color);
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.chatbot-footer input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid var(--secondary-color);
+    border-radius: 20px;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.chatbot-footer input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.chatbot-footer button {
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.chatbot-footer button:hover {
+    background-color: var(--primary-color);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content .tagline {
+        font-size: 1.3em;
+    }
+
+    .education-card, .language-card {
+        max-width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        margin-top: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 15px 10px;
+    }
+
+    .hero .container {
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .hero-content {
+        min-width: unset;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content .tagline {
+        font-size: 1.1em;
+    }
+
+    .profile-pic {
+        width: 200px;
+        height: 200px;
+    }
+
+    .about-grid, .skills-grid, .contact-cards, .education-cards, .language-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .education-card, .language-card {
+        max-width: 100%;
+    }
+
+    .modal-content {
+        padding: 25px;
+        width: 95%;
+    }
+
+    .modal-images {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ocultar botones de navegación de Swiper en pantallas pequeñas si no se desean */
+    .swiper-button-prev,
+    .swiper-button-next {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .section {
+        padding: 50px 0;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content .tagline {
+        font-size: 1em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin: 5px;
+    }
+
+    .chatbot-window {
+        width: 280px;
+        right: 10px;
+        bottom: 70px;
+        height: 350px;
+    }
+
+    .chatbot-toggle-button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.8em;
+    }
+}
