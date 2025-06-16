@@ -123,7 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Renderizar Proyectos y Modal
     const projectsContainer = document.getElementById('projects-container');
-    // Asegúrate de que bootstrap.Modal esté disponible (verifica orden de scripts en HTML)
     const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
     const modalProjectTitle = document.getElementById('modal-project-title');
     const modalProjectDescription = document.getElementById('modal-project-description');
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderProjects() {
         if (!projectsContainer) {
             console.error('El elemento #projects-container no se encontró en el DOM.');
-            return; // Salir si el contenedor no existe
+            return;
         }
 
         projectsData.forEach(project => {
@@ -142,7 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.dataset.projectId = project.id; // Para identificar el proyecto
 
-            // *** ESTA ES LA CORRECCIÓN CRÍTICA: TODA LA CADENA HTML DEBE ESTAR ENTRE BACKTICKS (`) ***
+            // *** ¡VERIFICAR ESTE BLOQUE EXTREMADAMENTE CUIDADOSAMENTE! ***
+            // Asegúrate de que las comillas invertidas (`) son las que abren y cierran el bloque HTML.
+            // Y que las variables como ${project.title} estén CORRECTAMENTE escritas.
             swiperSlide.innerHTML = `
                 <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
                 <div class="project-details">
@@ -155,12 +156,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-links">
                     <button class="btn btn-primary btn-small view-project-btn">Ver Detalles</button>
                 </div>
-            `;
+            `; // <--- ¡Asegúrate que este backtick de cierre está aquí!
             projectsContainer.appendChild(swiperSlide);
         });
 
         // Añadir evento click a cada botón "Ver Detalles" (delegación de eventos)
-        // Se adjunta el listener al contenedor principal para manejar clics en elementos dinámicos
         document.querySelector('#projects-container').addEventListener('click', (event) => {
             if (event.target.classList.contains('view-project-btn')) {
                 const projectId = event.target.closest('.swiper-slide').dataset.projectId;
@@ -176,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
         modalProjectTitle.textContent = project.title;
         modalProjectDescription.textContent = project.description;
 
-        // *** CORRECCIÓN ADICIONAL PARA EL MODAL: TAMBIÉN AQUÍ USAR BACKTICKS PARA EL MAP DE LENGUAJES ***
         modalLanguages.innerHTML = project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('');
         
         modalProjectImages.innerHTML = '';
@@ -187,34 +186,31 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProjectImages.appendChild(img);
         });
 
-        // Configurar enlaces (Github y Demo)
         if (project.liveDemo && project.liveDemo !== '#') {
             modalProjectLiveDemo.href = project.liveDemo;
             modalProjectLiveDemo.textContent = 'Ver Demo en Vivo';
             modalProjectLiveDemo.style.display = 'inline-block';
-        } else if (project.github && project.github !== '#') { // Si no hay demo, mostrar GitHub como botón principal
+        } else if (project.github && project.github !== '#') {
             modalProjectLiveDemo.href = project.github;
             modalProjectLiveDemo.textContent = 'Ver en GitHub';
             modalProjectLiveDemo.style.display = 'inline-block';
         } else {
-            modalProjectLiveDemo.style.display = 'none'; // Ocultar si no hay enlaces
+            modalProjectLiveDemo.style.display = 'none';
         }
 
-        projectModal.show(); // Muestra el modal de Bootstrap
+        projectModal.show();
     }
 
-    renderProjects(); // Renderizar proyectos al cargar la página
+    renderProjects();
 
     // 4. Inicialización de Swiper.js
-    // Añadir un pequeño retraso para asegurar que los slides estén en el DOM antes de inicializar Swiper
     setTimeout(() => {
         const swiperContainerElement = document.querySelector('.swiper-container');
-        // Solo inicializar Swiper si el contenedor existe y tiene slides
         if (swiperContainerElement && swiperContainerElement.querySelector('.swiper-wrapper').children.length > 0) {
             new Swiper('.swiper-container', {
                 slidesPerView: 1,
                 spaceBetween: 30,
-                loop: true, // Habilitar loop para un carrusel continuo
+                loop: true,
                 pagination: {
                     el: '.swiper-pagination',
                     clickable: true,
@@ -224,8 +220,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     prevEl: '.swiper-button-prev',
                 },
                 autoplay: {
-                    delay: 5000, // 5 segundos
-                    disableOnInteraction: false, // El autoplay no se detiene al interactuar
+                    delay: 5000,
+                    disableOnInteraction: false,
                 },
                 breakpoints: {
                     640: {
@@ -242,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             console.warn('Swiper no se inicializó porque no se encontraron proyectos en el contenedor o el contenedor Swiper no existe.');
         }
-    }, 100); // Pequeño delay de 100ms para asegurar el renderizado
+    }, 100);
 
     // 5. Funcionalidad del Chatbot
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
@@ -270,7 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Previene el salto de línea o envío de formulario por defecto
+                e.preventDefault();
                 sendMessage();
             }
         });
@@ -280,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userMessage !== '') {
                 displayMessage(userMessage, 'user');
                 chatbotInput.value = '';
-                // Simula una respuesta del bot
                 setTimeout(() => {
                     handleBotResponse(userMessage);
                 }, 500);
@@ -289,11 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function displayMessage(message, sender) {
             const messageDiv = document.createElement('div');
-            // *** CORRECCIÓN ADICIONAL: TAMBIÉN AQUÍ USAR BACKTICKS PARA LA CLASE DINÁMICA ***
             messageDiv.classList.add('chat-message', `${sender}-message`);
             messageDiv.textContent = message;
             chatbotBody.appendChild(messageDiv);
-            // Scroll al final del chat
             chatbotBody.scrollTop = chatbotBody.scrollHeight;
         }
 
