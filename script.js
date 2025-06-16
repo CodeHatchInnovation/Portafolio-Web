@@ -144,11 +144,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // *** ¡VERIFICAR ESTE BLOQUE EXTREMADAMENTE CUIDADOSAMENTE! ***
             // Asegúrate de que las comillas invertidas (`) son las que abren y cierran el bloque HTML.
             // Y que las variables como ${project.title} estén CORRECTAMENTE escritas.
-            swiperSlide.innerHTML = `
+            swiperSlide.innerHTML = 
                 <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
                 <div class="project-details">
                     <h3><span class="math-inline">\{project\.title\}</h3\>
-<p\></span>{project.description.substring(0, 100)}...</p>
+                    <p\></span>{project.description.substring(0, 100)}...</p>
                     <div class="project-languages">
                         ${project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('')}
                     </div>
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-links">
                     <button class="btn btn-primary btn-small view-project-btn">Ver Detalles</button>
                 </div>
-            `; // <--- ¡Asegúrate que este backtick de cierre está aquí!
+            ; // <--- ¡Asegúrate que este backtick de cierre está aquí!
             projectsContainer.appendChild(swiperSlide);
         });
 
