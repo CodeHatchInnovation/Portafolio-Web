@@ -33,95 +33,93 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 2. Datos de Proyectos
-    const projects = [
-  {
-    id: 'project1',
-    title: 'App Android para Psicólogos y Clientes',
-    description: 'Aplicación móvil desarrollada en Kotlin con Android Studio, orientada a facilitar la interacción entre psicólogos y sus pacientes. Incluye funciones de videollamada, envío de archivos y actividades interactivas. Aunque fue cancelada antes del lanzamiento por falta de financiamiento, el prototipo funcional demuestra experiencia en desarrollo móvil y manejo de flujos complejos de usuario.',
-    languages: ['Kotlin', 'Android Studio'],
-    images: [
-      'images/project1-full1.jpg'
-    ],
-    liveDemo: '#', // No venía URL, lo dejo placeholder
-    github: '#', // Tampoco venía, placeholder
-    thumbnail: 'images/project1-thumb.jpg'
-  },
-  {
-    id: 'project2',
-    title: 'Punto de Venta Automatizado',
-    description: 'Proyecto de automatización en Excel usando VBA para una tienda local. Permite gestionar ventas, inventario y cálculos automáticos mediante una interfaz intuitiva. Incluye menús personalizados, validaciones y generación de reportes, todo dentro de un solo archivo de Excel para facilitar su distribución y uso sin conexión.',
-    languages: ['Excel', 'VBA'],
-    images: [
-      'images/project2-full1.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project2-thumb.jpg'
-  },
-  {
-    id: 'project3',
-    title: 'Gestor de Base de Datos',
-    description: 'Sistema de gestión desarrollado en Python con SQLite como base de datos local. Incluye operaciones CRUD completas para clientes y ventas, validaciones de entrada, generación de reportes y una estructura ligera pensada para pequeños negocios. Enfocado en funcionalidad, portabilidad y facilidad de uso.',
-    languages: ['Python', 'SQLite'],
-    images: [
-      'images/project3-full1.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project3-thumb.jpg'
-  },
-  {
-    id: 'project4',
-    title: 'App para Cafetería Escolar',
-    description: 'Aplicación Android desarrollada para agilizar el proceso de pedidos en una cafetería escolar. Los estudiantes pueden ver el menú, seleccionar productos y enviar pedidos directamente al encargado. Esto redujo tiempos de atención y mejoró la organización interna del servicio.',
-    languages: ['Java', 'Android Studio', 'XML'],
-    images: [
-      'images/project4-full1.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project4-thumb.jpg'
-  },
-  {
-    id: 'project5',
-    title: 'Portafolio Web Personal',
-    description: 'Este portafolio ha sido desarrollado desde cero usando HTML, CSS y JavaScript puro, con una arquitectura basada en JSON para cargar los proyectos dinámicamente. Incluye tarjetas interactivas que se expanden al hacer clic, sliders de imágenes con Swiper.js, navegación fluida, y una estructura modular orientada a mantener el código limpio y escalable. Es tanto una vitrina de mis trabajos como una muestra directa de mis habilidades en desarrollo web frontend.',
-    languages: ['HTML', 'CSS', 'JavaScript', 'Swiper.js', 'JSON'],
-    images: [
-      'images/project5-full1.jpg',
-      'images/project5-full2.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project5-thumb.jpg'
-  },
-  {
-    id: 'project6',
-    title: 'Sitio Web para Restaurante',
-    description: 'Página web desarrollada con HTML, CSS y JavaScript para un restaurante local. Incluye sistema de reservas con formulario automático, menú digital y un diseño adaptable para móviles. Enfocado en la experiencia del usuario y la conversión de visitantes en clientes.',
-    languages: ['HTML', 'CSS', 'JavaScript'],
-    images: [
-      'images/project6-full1.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project6-thumb.jpg'
-  },
-  {
-    id: 'project7',
-    title: 'Sitio Web Informativo para Empresa de Logística',
-    description: 'Desarrollado para una empresa de logística, este sitio web ofrece información institucional clara y bien organizada. Secciones como servicios, misión, contacto y ubicación están estructuradas con navegación fluida. El diseño visual se adaptó a la identidad de la marca y es completamente responsivo.',
-    languages: ['HTML', 'CSS', 'JavaScript'],
-    images: [
-      'images/project7-full1.jpg'
-    ],
-    liveDemo: '#',
-    github: '#',
-    thumbnail: 'images/project7-thumb.jpg'
-  }
-];
-
-
+    const projectsData = [
+        {
+            id: 'project1',
+            title: 'App Android para Psicólogos y Clientes',
+            description: 'Aplicación móvil desarrollada en Kotlin con Android Studio, orientada a facilitar la interacción entre psicólogos y sus pacientes. Incluye funciones de videollamada, envío de archivos y actividades interactivas. Aunque fue cancelada antes del lanzamiento por falta de financiamiento, el prototipo funcional demuestra experiencia en desarrollo móvil y manejo de flujos complejos de usuario.',
+            languages: ['Kotlin', 'Android Studio'],
+            images: [
+              'images/project1-full1.jpg'
+            ],
+            liveDemo: '#', // No venía URL, lo dejo placeholder
+            github: '#', // Tampoco venía, placeholder
+            thumbnail: 'images/project1-thumb.jpg'
+          },
+          {
+            id: 'project2',
+            title: 'Punto de Venta Automatizado',
+            description: 'Proyecto de automatización en Excel usando VBA para una tienda local. Permite gestionar ventas, inventario y cálculos automáticos mediante una interfaz intuitiva. Incluye menús personalizados, validaciones y generación de reportes, todo dentro de un solo archivo de Excel para facilitar su distribución y uso sin conexión.',
+            languages: ['Excel', 'VBA'],
+            images: [
+              'images/project2-full1.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project2-thumb.jpg'
+          },
+          {
+            id: 'project3',
+            title: 'Gestor de Base de Datos',
+            description: 'Sistema de gestión desarrollado en Python con SQLite como base de datos local. Incluye operaciones CRUD completas para clientes y ventas, validaciones de entrada, generación de reportes y una estructura ligera pensada para pequeños negocios. Enfocado en funcionalidad, portabilidad y facilidad de uso.',
+            languages: ['Python', 'SQLite'],
+            images: [
+              'images/project3-full1.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project3-thumb.jpg'
+          },
+          {
+            id: 'project4',
+            title: 'App para Cafetería Escolar',
+            description: 'Aplicación Android desarrollada para agilizar el proceso de pedidos en una cafetería escolar. Los estudiantes pueden ver el menú, seleccionar productos y enviar pedidos directamente al encargado. Esto redujo tiempos de atención y mejoró la organización interna del servicio.',
+            languages: ['Java', 'Android Studio', 'XML'],
+            images: [
+              'images/project4-full1.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project4-thumb.jpg'
+          },
+          {
+            id: 'project5',
+            title: 'Portafolio Web Personal',
+            description: 'Este portafolio ha sido desarrollado desde cero usando HTML, CSS y JavaScript puro, con una arquitectura basada en JSON para cargar los proyectos dinámicamente. Incluye tarjetas interactivas que se expanden al hacer clic, sliders de imágenes con Swiper.js, navegación fluida, y una estructura modular orientada a mantener el código limpio y escalable. Es tanto una vitrina de mis trabajos como una muestra directa de mis habilidades en desarrollo web frontend.',
+            languages: ['HTML', 'CSS', 'JavaScript', 'Swiper.js', 'JSON'],
+            images: [
+              'images/project5-full1.jpg',
+              'images/project5-full2.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project5-thumb.jpg'
+          },
+          {
+            id: 'project6',
+            title: 'Sitio Web para Restaurante',
+            description: 'Página web desarrollada con HTML, CSS y JavaScript para un restaurante local. Incluye sistema de reservas con formulario automático, menú digital y un diseño adaptable para móviles. Enfocado en la experiencia del usuario y la conversión de visitantes en clientes.',
+            languages: ['HTML', 'CSS', 'JavaScript'],
+            images: [
+              'images/project6-full1.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project6-thumb.jpg'
+          },
+          {
+            id: 'project7',
+            title: 'Sitio Web Informativo para Empresa de Logística',
+            description: 'Desarrollado para una empresa de logística, este sitio web ofrece información institucional clara y bien organizada. Secciones como servicios, misión, contacto y ubicación están estructuradas con navegación fluida. El diseño visual se adaptó a la identidad de la marca y es completamente responsivo.',
+            languages: ['HTML', 'CSS', 'JavaScript'],
+            images: [
+              'images/project7-full1.jpg'
+            ],
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'images/project7-thumb.jpg'
+          }
+        ];
     // 3. Renderizar Proyectos y Modal
     const projectsContainer = document.getElementById('projects-container');
     const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
