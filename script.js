@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Aplicación móvil desarrollada en Kotlin con Android Studio, orientada a facilitar la interacción entre psicólogos y sus pacientes. Incluye funciones de videollamada, envío de archivos y actividades interactivas. Aunque fue cancelada antes del lanzamiento por falta de financiamiento, el prototipo funcional demuestra experiencia en desarrollo móvil y manejo de flujos complejos de usuario.',
             languages: ['Kotlin', 'Android Studio'],
             images: [
-              'images/project1-full1.jpg'
+              'assets/images/projects/project1-full1.jpg' // Corregí la ruta a 'assets/images/projects/'
             ],
             liveDemo: '#', // No venía URL, lo dejo placeholder
             github: '#', // Tampoco venía, placeholder
-            thumbnail: 'images/project1-thumb.jpg'
+            thumbnail: 'assets/images/projects/project1-thumb.jpg' // Corregí la ruta
           },
           {
             id: 'project2',
@@ -52,11 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Proyecto de automatización en Excel usando VBA para una tienda local. Permite gestionar ventas, inventario y cálculos automáticos mediante una interfaz intuitiva. Incluye menús personalizados, validaciones y generación de reportes, todo dentro de un solo archivo de Excel para facilitar su distribución y uso sin conexión.',
             languages: ['Excel', 'VBA'],
             images: [
-              'images/project2-full1.jpg'
+              'assets/images/projects/project2-full1.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project2-thumb.jpg'
+            thumbnail: 'assets/images/projects/project2-thumb.jpg'
           },
           {
             id: 'project3',
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Sistema de gestión desarrollado en Python con SQLite como base de datos local. Incluye operaciones CRUD completas para clientes y ventas, validaciones de entrada, generación de reportes y una estructura ligera pensada para pequeños negocios. Enfocado en funcionalidad, portabilidad y facilidad de uso.',
             languages: ['Python', 'SQLite'],
             images: [
-              'images/project3-full1.jpg'
+              'assets/images/projects/project3-full1.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project3-thumb.jpg'
+            thumbnail: 'assets/images/projects/project3-thumb.jpg'
           },
           {
             id: 'project4',
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Aplicación Android desarrollada para agilizar el proceso de pedidos en una cafetería escolar. Los estudiantes pueden ver el menú, seleccionar productos y enviar pedidos directamente al encargado. Esto redujo tiempos de atención y mejoró la organización interna del servicio.',
             languages: ['Java', 'Android Studio', 'XML'],
             images: [
-              'images/project4-full1.jpg'
+              'assets/images/projects/project4-full1.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project4-thumb.jpg'
+            thumbnail: 'assets/images/projects/project4-thumb.jpg'
           },
           {
             id: 'project5',
@@ -88,12 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Este portafolio ha sido desarrollado desde cero usando HTML, CSS y JavaScript puro, con una arquitectura basada en JSON para cargar los proyectos dinámicamente. Incluye tarjetas interactivas que se expanden al hacer clic, sliders de imágenes con Swiper.js, navegación fluida, y una estructura modular orientada a mantener el código limpio y escalable. Es tanto una vitrina de mis trabajos como una muestra directa de mis habilidades en desarrollo web frontend.',
             languages: ['HTML', 'CSS', 'JavaScript', 'Swiper.js', 'JSON'],
             images: [
-              'images/project5-full1.jpg',
-              'images/project5-full2.jpg'
+              'assets/images/projects/project5-full1.jpg',
+              'assets/images/projects/project5-full2.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project5-thumb.jpg'
+            thumbnail: 'assets/images/projects/project5-thumb.jpg'
           },
           {
             id: 'project6',
@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Página web desarrollada con HTML, CSS y JavaScript para un restaurante local. Incluye sistema de reservas con formulario automático, menú digital y un diseño adaptable para móviles. Enfocado en la experiencia del usuario y la conversión de visitantes en clientes.',
             languages: ['HTML', 'CSS', 'JavaScript'],
             images: [
-              'images/project6-full1.jpg'
+              'assets/images/projects/project6-full1.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project6-thumb.jpg'
+            thumbnail: 'assets/images/projects/project6-thumb.jpg'
           },
           {
             id: 'project7',
@@ -113,13 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Desarrollado para una empresa de logística, este sitio web ofrece información institucional clara y bien organizada. Secciones como servicios, misión, contacto y ubicación están estructuradas con navegación fluida. El diseño visual se adaptó a la identidad de la marca y es completamente responsivo.',
             languages: ['HTML', 'CSS', 'JavaScript'],
             images: [
-              'images/project7-full1.jpg'
+              'assets/images/projects/project7-full1.jpg'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'images/project7-thumb.jpg'
+            thumbnail: 'assets/images/projects/project7-thumb.jpg'
           }
         ];
+
     // 3. Renderizar Proyectos y Modal
     const projectsContainer = document.getElementById('projects-container');
     const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
@@ -130,38 +131,43 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectLiveDemo = document.getElementById('modal-project-live-demo');
 
     function renderProjects() {
-        if (!projectsContainer) return; // Salir si el contenedor no existe
+        if (!projectsContainer) {
+            console.error('El elemento #projects-container no se encontró en el DOM.');
+            return; // Salir si el contenedor no existe
+        }
 
         projectsData.forEach(project => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.dataset.projectId = project.id; // Para identificar el proyecto
 
-            swiperSlide.innerHTML = 
-                <img src="${project.images[0]}" alt="${project.title}" class="project-thumbnail">
+            // *** CORRECCIÓN CLAVE AQUÍ: Usar backticks (`) para el template literal ***
+            swiperSlide.innerHTML = `
+                <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
                 <div class="project-details">
-                    <h3>${project.title}</h3>
-                    <p>${project.description.substring(0, 100)}...</p>
+                    <h3><span class="math-inline">\{project\.title\}</h3\>
+<p\></span>{project.description.substring(0, 100)}...</p>
                     <div class="project-languages">
-                        ${project.languages.map(lang => <span class="language-badge">${lang}</span>).join('')}
+                        ${project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('')}
                     </div>
                 </div>
                 <div class="project-links">
                     <button class="btn btn-primary btn-small view-project-btn">Ver Detalles</button>
                 </div>
-            ;
+            `;
             projectsContainer.appendChild(swiperSlide);
         });
 
         // Añadir evento click a cada botón "Ver Detalles"
-        document.querySelectorAll('.view-project-btn').forEach(button => {
-            button.addEventListener('click', (event) => {
+        // Delegación de eventos para botones creados dinámicamente
+        document.querySelector('#projects-container').addEventListener('click', (event) => {
+            if (event.target.classList.contains('view-project-btn')) {
                 const projectId = event.target.closest('.swiper-slide').dataset.projectId;
                 const project = projectsData.find(p => p.id === projectId);
                 if (project) {
                     showProjectModal(project);
                 }
-            });
+            }
         });
     }
 
@@ -169,7 +175,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalProjectTitle.textContent = project.title;
         modalProjectDescription.textContent = project.description;
 
-        modalLanguages.innerHTML = project.languages.map(lang => <span class="language-badge">${lang}</span>).join('');
+        modalLanguages.innerHTML = project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('');
         
         modalProjectImages.innerHTML = '';
         project.images.forEach(imageSrc => {
@@ -184,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProjectLiveDemo.href = project.liveDemo;
             modalProjectLiveDemo.textContent = 'Ver Demo en Vivo';
             modalProjectLiveDemo.style.display = 'inline-block';
-        } else if (project.github) { // Si no hay demo, mostrar GitHub como botón principal
+        } else if (project.github && project.github !== '#') { // Si no hay demo, mostrar GitHub como botón principal
             modalProjectLiveDemo.href = project.github;
             modalProjectLiveDemo.textContent = 'Ver en GitHub';
             modalProjectLiveDemo.style.display = 'inline-block';
@@ -198,36 +204,41 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects(); // Renderizar proyectos al cargar la página
 
     // 4. Inicialización de Swiper.js
-    if (projectsContainer && projectsContainer.children.length > 0) { // Solo inicializar si hay proyectos
-        new Swiper('.swiper-container', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true, // Habilitar loop para un carrusel continuo
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            autoplay: {
-                delay: 5000, // 5 segundos
-                disableOnInteraction: false, // El autoplay no se detiene al interactuar
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 1,
+    // Esperar un pequeño momento para asegurar que los elementos se han añadido y el DOM se ha actualizado
+    setTimeout(() => {
+        if (projectsContainer && projectsContainer.children.length > 0) { // Solo inicializar si hay proyectos
+            new Swiper('.swiper-container', {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true, // Habilitar loop para un carrusel continuo
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
                 },
-                768: {
-                    slidesPerView: 2,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
                 },
-                1024: {
-                    slidesPerView: 3,
+                autoplay: {
+                    delay: 5000, // 5 segundos
+                    disableOnInteraction: false, // El autoplay no se detiene al interactuar
                 },
-            },
-        });
-    }
+                breakpoints: {
+                    640: {
+                        slidesPerView: 1,
+                    },
+                    768: {
+                        slidesPerView: 2,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                    },
+                },
+            });
+        } else {
+            console.warn('Swiper no se inicializó porque no se encontraron proyectos en el contenedor.');
+        }
+    }, 100); // Pequeño delay de 100ms
 
     // 5. Funcionalidad del Chatbot
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
@@ -255,6 +266,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
+                e.preventDefault(); // Previene el salto de línea si el input es un textarea o similar
                 sendMessage();
             }
         });
@@ -273,7 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function displayMessage(message, sender) {
             const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', ${sender}-message);
+            // *** CORRECCIÓN CLAVE AQUÍ: Usar backticks (`) para el template literal en la clase ***
+            messageDiv.classList.add('chat-message', `${sender}-message`);
             messageDiv.textContent = message;
             chatbotBody.appendChild(messageDiv);
             // Scroll al final del chat
