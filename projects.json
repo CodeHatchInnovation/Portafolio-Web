@@ -1,52 +1,82 @@
 {
-    "projects": [
-        {
-            "id": "1",
-            "title": "Sistema de Gestión de Clientes",
-            "short_description": "Aplicación web para la administración de datos de clientes, historial de compras y seguimiento de interacciones.",
-            "long_description": "Este proyecto es un sistema CRUD (Crear, Leer, Actualizar, Borrar) completo para gestionar una base de datos de clientes. Desarrollado con PHP para el backend y MySQL como base de datos, ofrece una interfaz de usuario intuitiva construida con HTML, CSS y JavaScript. Permite a los usuarios añadir nuevos clientes, buscar existentes, actualizar su información y eliminar registros. La seguridad básica de formularios y la validación de entrada están implementadas para garantizar la integridad de los datos.",
-            "thumbnail": "images/project1-thumb.jpg",
-            "images": [
-                "images/project1-full1.jpg",
-                "images/project1-full2.jpg"
-            ],
-            "languages": ["PHP", "MySQL", "HTML", "CSS", "JavaScript"]
-        },
-        {
-            "id": "2",
-            "title": "Aplicación de Recetas Android",
-            "short_description": "Aplicación móvil nativa para Android que permite a los usuarios buscar y guardar sus recetas favoritas.",
-            "long_description": "Desarrollada en Android Studio con Java, esta aplicación móvil permite a los usuarios explorar una colección de recetas. Utiliza SQLite para el almacenamiento local de datos, permitiendo guardar recetas favoritas sin conexión. La interfaz de usuario es amigable y responde a diferentes tamaños de pantalla. Incluye funcionalidades de búsqueda por nombre de receta y categorías, y una vista detallada para cada receta con ingredientes e instrucciones.",
-            "thumbnail": "images/project2-thumb.jpg",
-            "images": [
-                "images/project2-full1.jpg",
-                "images/project2-full2.jpg",
-                "images/project2-full3.jpg"
-            ],
-            "languages": ["Java", "Android Studio", "SQLite", "XML"]
-        },
-        {
-            "id": "3",
-            "title": "Portafolio Personal (Este mismo)",
-            "short_description": "Este portafolio interactivo, diseñado para mostrar mis habilidades y proyectos de desarrollo web.",
-            "long_description": "Este es el código fuente del portafolio que estás viendo ahora mismo. Ha sido construido con un enfoque en la elegancia, la simplicidad y la capacidad de respuesta. Utiliza HTML semántico, CSS moderno para un diseño atractivo y JavaScript para la interactividad, incluyendo el carrusel de proyectos con Swiper.js y un modal de detalles para cada proyecto. Es una demostración de mis habilidades en frontend y de mi capacidad para integrar librerías de terceros.",
-            "thumbnail": "images/project3-thumb.jpg",
-            "images": [
-                "images/project3-full1.jpg",
-                "images/project3-full2.jpg"
-            ],
-            "languages": ["HTML", "CSS", "JavaScript", "Swiper.js"]
-        },
-        {
-            "id": "4",
-            "title": "Script de Automatización de Redes",
-            "short_description": "Script en Python para automatizar la configuración básica de dispositivos de red Cisco.",
-            "long_description": "Este script de Python utiliza la librería 'Netmiko' para conectarse a dispositivos de red Cisco (routers y switches) a través de SSH y ejecutar comandos de configuración predefinidos. Es una herramienta útil para la automatización de tareas repetitivas como la configuración de VLANs, interfaces o la recopilación de información de diagnóstico. Demuestra mi capacidad para trabajar con Python en el ámbito de la administración de sistemas y redes.",
-            "thumbnail": "images/project4-thumb.jpg",
-            "images": [
-                "images/project4-full1.jpg"
-            ],
-            "languages": ["Python", "Netmiko", "Redes Cisco"]
-        }
-    ]
+  "projects": [
+    {
+      "id": "1",
+      "title": "App Android para Psicólogos y Clientes",
+      "short_description": "Prototipo funcional para conectar psicólogos y pacientes mediante videollamadas y actividades.",
+      "long_description": "Aplicación móvil desarrollada en Kotlin con Android Studio, orientada a facilitar la interacción entre psicólogos y sus pacientes. Incluye funciones de videollamada, envío de archivos y actividades interactivas. Aunque fue cancelada antes del lanzamiento por falta de financiamiento, el prototipo funcional demuestra experiencia en desarrollo móvil y manejo de flujos complejos de usuario.",
+      "thumbnail": "images/project1-thumb.jpg",
+      "images": [
+        "images/project1-full1.jpg"
+      ],
+      "languages": ["Kotlin", "Android Studio"]
+    },
+    {
+      "id": "2",
+      "title": "Punto de Venta Automatizado",
+      "short_description": "Sistema con macros para ventas e inventario en comercio local, desarrollado en Excel con VBA.",
+      "long_description": "Proyecto de automatización en Excel usando VBA para una tienda local. Permite gestionar ventas, inventario y cálculos automáticos mediante una interfaz intuitiva. Incluye menús personalizados, validaciones y generación de reportes, todo dentro de un solo archivo de Excel para facilitar su distribución y uso sin conexión.",
+      "thumbnail": "images/project2-thumb.jpg",
+      "images": [
+        "images/project2-full1.jpg"
+      ],
+      "languages": ["Excel", "VBA"]
+    },
+    {
+      "id": "3",
+      "title": "Gestor de Base de Datos",
+      "short_description": "Aplicación en Python con CRUD completo para clientes, ventas y reportes automáticos.",
+      "long_description": "Sistema de gestión desarrollado en Python con SQLite como base de datos local. Incluye operaciones CRUD completas para clientes y ventas, validaciones de entrada, generación de reportes y una estructura ligera pensada para pequeños negocios. Enfocado en funcionalidad, portabilidad y facilidad de uso.",
+      "thumbnail": "images/project3-thumb.jpg",
+      "images": [
+        "images/project3-full1.jpg"
+      ],
+      "languages": ["Python", "SQLite"]
+    },
+    {
+      "id": "4",
+      "title": "App para Cafetería Escolar",
+      "short_description": "Aplicación móvil para pedidos en cafetería escolar con menú digital y envíos automáticos.",
+      "long_description": "Aplicación Android desarrollada para agilizar el proceso de pedidos en una cafetería escolar. Los estudiantes pueden ver el menú, seleccionar productos y enviar pedidos directamente al encargado. Esto redujo tiempos de atención y mejoró la organización interna del servicio.",
+      "thumbnail": "images/project4-thumb.jpg",
+      "images": [
+        "images/project4-full1.jpg"
+      ],
+      "languages": ["Java", "Android Studio", "XML"]
+    },
+    {
+      "id": "5",
+      "title": "Portafolio Web Personal",
+      "short_description": "Sitio interactivo para presentar mis proyectos y habilidades, con diseño responsivo y dinámico.",
+      "long_description": "Este portafolio ha sido desarrollado desde cero usando HTML, CSS y JavaScript puro, con una arquitectura basada en JSON para cargar los proyectos dinámicamente. Incluye tarjetas interactivas que se expanden al hacer clic, sliders de imágenes con Swiper.js, navegación fluida, y una estructura modular orientada a mantener el código limpio y escalable. Es tanto una vitrina de mis trabajos como una muestra directa de mis habilidades en desarrollo web frontend.",
+      "thumbnail": "images/project5-thumb.jpg",
+      "images": [
+        "images/project5-full1.jpg",
+        "images/project5-full2.jpg"
+      ],
+      "languages": ["HTML", "CSS", "JavaScript", "Swiper.js", "JSON"]
+    },
+    {
+      "id": "6",
+      "title": "Sitio Web para Restaurante",
+      "short_description": "Sitio responsivo con sistema de reservaciones, menú digital y formulario de contacto.",
+      "long_description": "Página web desarrollada con HTML, CSS y JavaScript para un restaurante local. Incluye sistema de reservas con formulario automático, menú digital y un diseño adaptable para móviles. Enfocado en la experiencia del usuario y la conversión de visitantes en clientes.",
+      "thumbnail": "images/project6-thumb.jpg",
+      "images": [
+        "images/project6-full1.jpg"
+      ],
+      "languages": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+      "id": "7",
+      "title": "Sitio Web Informativo para Empresa de Logística",
+      "short_description": "Portal profesional con secciones de servicios, misión, contacto y diseño corporativo.",
+      "long_description": "Desarrollado para una empresa de logística, este sitio web ofrece información institucional clara y bien organizada. Secciones como servicios, misión, contacto y ubicación están estructuradas con navegación fluida. El diseño visual se adaptó a la identidad de la marca y es completamente responsivo.",
+      "thumbnail": "images/project7-thumb.jpg",
+      "images": [
+        "images/project7-full1.jpg"
+      ],
+      "languages": ["HTML", "CSS", "JavaScript"]
+    }
+  ]
 }
