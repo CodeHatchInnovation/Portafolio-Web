@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.dataset.projectId = project.id; // Para identificar el proyecto
 
-            // *** CORRECCIÓN CLAVE: Usar backticks (`) para envolver todo el HTML ***
+            // *** ESTA ES LA CORRECCIÓN CRÍTICA: TODA LA CADENA HTML DEBE ESTAR ENTRE BACKTICKS (`) ***
             swiperSlide.innerHTML = `
                 <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
                 <div class="project-details">
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalProjectTitle.textContent = project.title;
         modalProjectDescription.textContent = project.description;
 
-        // *** CORRECCIÓN: También aquí, usar backticks para el template literal ***
+        // *** CORRECCIÓN ADICIONAL PARA EL MODAL: TAMBIÉN AQUÍ USAR BACKTICKS PARA EL MAP DE LENGUAJES ***
         modalLanguages.innerHTML = project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('');
         
         modalProjectImages.innerHTML = '';
@@ -289,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function displayMessage(message, sender) {
             const messageDiv = document.createElement('div');
-            // *** CORRECCIÓN CLAVE: Usar backticks (`) para la cadena de clase en el chatbot ***
+            // *** CORRECCIÓN ADICIONAL: TAMBIÉN AQUÍ USAR BACKTICKS PARA LA CLASE DINÁMICA ***
             messageDiv.classList.add('chat-message', `${sender}-message`);
             messageDiv.textContent = message;
             chatbotBody.appendChild(messageDiv);
