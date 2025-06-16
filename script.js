@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         ];
 
-    // 3. Renderizar Proyectos y Modal
+    // 3. Renderizar Proyectos
     const projectsContainer = document.getElementById('projects-container');
     const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
     const modalProjectTitle = document.getElementById('modal-project-title');
@@ -131,24 +131,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalProjectLiveDemo = document.getElementById('modal-project-live-demo');
 
     function renderProjects() {
-        if (!projectsContainer) {
-            console.error('El elemento #projects-container no se encontró en el DOM.');
-            return;
-        }
+        if (!projectsContainer) return;
 
         projectsData.forEach(project => {
             const swiperSlide = document.createElement('div');
             swiperSlide.classList.add('swiper-slide');
-            swiperSlide.dataset.projectId = project.id; // Para identificar el proyecto
+            swiperSlide.dataset.projectId = project.id;
 
-            // *** ¡VERIFICAR ESTE BLOQUE EXTREMADAMENTE CUIDADOSAMENTE! ***
-            // Asegúrate de que las comillas invertidas (`) son las que abren y cierran el bloque HTML.
-            // Y que las variables como ${project.title} estén CORRECTAMENTE escritas.
-            swiperSlide.innerHTML = 
-                <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
+            swiperSlide.innerHTML = `
+                <img src="${project.images[0]}" alt="${project.title}" class="project-thumbnail">
                 <div class="project-details">
-                    <h3><span class="math-inline">\{project\.title\}</h3\>
-                    <p\></span>{project.description.substring(0, 100)}...</p>
+                    <h3>${project.title}</h3>
+                    <p>${project.description.substring(0, 100)}...</p>
                     <div class="project-languages">
                         ${project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('')}
                     </div>
@@ -156,19 +150,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="project-links">
                     <button class="btn btn-primary btn-small view-project-btn">Ver Detalles</button>
                 </div>
-            ; // <--- ¡Asegúrate que este backtick de cierre está aquí!
+            `;
             projectsContainer.appendChild(swiperSlide);
         });
 
-        // Añadir evento click a cada botón "Ver Detalles" (delegación de eventos)
-        document.querySelector('#projects-container').addEventListener('click', (event) => {
-            if (event.target.classList.contains('view-project-btn')) {
+        document.querySelectorAll('.view-project-btn').forEach(button => {
+            button.addEventListener('click', (event) => {
                 const projectId = event.target.closest('.swiper-slide').dataset.projectId;
                 const project = projectsData.find(p => p.id === projectId);
-                if (project) {
-                    showProjectModal(project);
-                }
-            }
+                if (project) showProjectModal(project);
+            });
         });
     }
 
@@ -177,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalProjectDescription.textContent = project.description;
 
         modalLanguages.innerHTML = project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('');
-        
+
         modalProjectImages.innerHTML = '';
         project.images.forEach(imageSrc => {
             const img = document.createElement('img');
@@ -190,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
             modalProjectLiveDemo.href = project.liveDemo;
             modalProjectLiveDemo.textContent = 'Ver Demo en Vivo';
             modalProjectLiveDemo.style.display = 'inline-block';
-        } else if (project.github && project.github !== '#') {
+        } else if (project.github) {
             modalProjectLiveDemo.href = project.github;
             modalProjectLiveDemo.textContent = 'Ver en GitHub';
             modalProjectLiveDemo.style.display = 'inline-block';
@@ -203,44 +194,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderProjects();
 
-    // 4. Inicialización de Swiper.js
-    setTimeout(() => {
-        const swiperContainerElement = document.querySelector('.swiper-container');
-        if (swiperContainerElement && swiperContainerElement.querySelector('.swiper-wrapper').children.length > 0) {
-            new Swiper('.swiper-container', {
-                slidesPerView: 1,
-                spaceBetween: 30,
-                loop: true,
-                pagination: {
-                    el: '.swiper-pagination',
-                    clickable: true,
-                },
-                navigation: {
-                    nextEl: '.swiper-button-next',
-                    prevEl: '.swiper-button-prev',
-                },
-                autoplay: {
-                    delay: 5000,
-                    disableOnInteraction: false,
-                },
-                breakpoints: {
-                    640: {
-                        slidesPerView: 1,
-                    },
-                    768: {
-                        slidesPerView: 2,
-                    },
-                    1024: {
-                        slidesPerView: 3,
-                    },
-                },
-            });
-        } else {
-            console.warn('Swiper no se inicializó porque no se encontraron proyectos en el contenedor o el contenedor Swiper no existe.');
-        }
-    }, 100);
+    // 4. Inicializar Swiper.js
+    if (projectsContainer && projectsContainer.children.length > 0) {
+        new Swiper('.swiper-container', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            },
+        });
+    }
 
-    // 5. Funcionalidad del Chatbot
+    // 5. Chatbot
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
     const chatbotWindow = document.getElementById('chatbot-window');
     const chatbotCloseButton = document.getElementById('chatbot-close-button');
@@ -251,9 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (chatbotToggleButton && chatbotWindow && chatbotCloseButton && chatbotInput && chatbotSendButton && chatbotBody) {
         chatbotToggleButton.addEventListener('click', () => {
             chatbotWindow.classList.toggle('open');
-            if (chatbotWindow.classList.contains('open')) {
-                chatbotInput.focus();
-            }
+            if (chatbotWindow.classList.contains('open')) chatbotInput.focus();
         });
 
         chatbotCloseButton.addEventListener('click', () => {
@@ -265,10 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                sendMessage();
-            }
+            if (e.key === 'Enter') sendMessage();
         });
 
         function sendMessage() {
@@ -276,9 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (userMessage !== '') {
                 displayMessage(userMessage, 'user');
                 chatbotInput.value = '';
-                setTimeout(() => {
-                    handleBotResponse(userMessage);
-                }, 500);
+                setTimeout(() => handleBotResponse(userMessage), 500);
             }
         }
 
@@ -291,33 +264,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         function handleBotResponse(message) {
-            let botResponse = 'Lo siento, no entendí tu pregunta. ¿Puedes reformularla o preguntar sobre mis habilidades, proyectos o contacto?';
-
             const lowerMessage = message.toLowerCase();
+            let botResponse = 'Lo siento, no entendí tu pregunta. ¿Puedes reformularla?';
 
-            if (lowerMessage.includes('hola') || lowerMessage.includes('saludo')) {
+            if (lowerMessage.includes('hola')) {
                 botResponse = '¡Hola! ¿En qué puedo ayudarte hoy?';
             } else if (lowerMessage.includes('nombre')) {
                 botResponse = 'Mi nombre es Brandon Uriel Escalona Garcia.';
             } else if (lowerMessage.includes('habilidades')) {
-                botResponse = 'Mis habilidades incluyen HTML, CSS, JavaScript, PHP, Python, MySQL, administración de Windows Server y redes. Puedes ver más en la sección de Habilidades.';
+                botResponse = 'Mis habilidades incluyen HTML, CSS, JavaScript, PHP, Python, MySQL, y redes.';
             } else if (lowerMessage.includes('proyectos')) {
-                botResponse = 'He trabajado en proyectos como un sistema de gestión de clientes, una web de consultoría financiera y un juego 2D en Python. Te invito a explorar la sección de Proyectos.';
+                botResponse = 'Puedes ver mis proyectos en la sección "Proyectos".';
             } else if (lowerMessage.includes('contacto')) {
-                botResponse = 'Puedes contactarme por email: brandonurielescalonagarcia@gmail.com o por LinkedIn.';
+                botResponse = 'Contáctame por email: brandonurielescalonagarcia@gmail.com o en LinkedIn.';
             } else if (lowerMessage.includes('edad')) {
-                botResponse = 'Soy un programa de computadora, no tengo edad. 😉';
+                botResponse = 'Soy un bot, no tengo edad 😄';
             } else if (lowerMessage.includes('gracias')) {
-                botResponse = 'De nada. ¡Estoy aquí para ayudarte!';
+                botResponse = '¡De nada! Estoy aquí para ayudarte.';
             } else if (lowerMessage.includes('desarrollador')) {
-                botResponse = 'Soy un desarrollador junior enfocado en crear soluciones web y optimizar infraestructuras digitales.';
+                botResponse = 'Soy un desarrollador junior enfocado en desarrollo web y sistemas.';
             } else if (lowerMessage.includes('cv') || lowerMessage.includes('curriculum')) {
-                botResponse = 'Puedes ver mi CV en el botón "Ver CV" en la sección de Inicio.';
-            } else if (lowerMessage.includes('redes') || lowerMessage.includes('networking')) {
-                botResponse = 'Tengo experiencia en redes digitales, incluyendo configuración y mantenimiento de infraestructuras de red y redes Cisco.';
+                botResponse = 'Puedes ver mi CV en la sección de Inicio del portafolio.';
+            } else if (lowerMessage.includes('redes')) {
+                botResponse = 'Tengo experiencia con redes y configuración de infraestructura digital.';
             } else if (lowerMessage.includes('servidores')) {
-                botResponse = 'Tengo experiencia en administración de servidores, especialmente con Windows Server 2019 e IIS.';
+                botResponse = 'Sé administrar servidores, especialmente Windows Server e IIS.';
             }
+
             displayMessage(botResponse, 'bot');
         }
     }
