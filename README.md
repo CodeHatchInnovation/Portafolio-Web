@@ -34,8 +34,8 @@ Para visualizar y probar este proyecto localmente, sigue estos pasos:
 
 1.  **Clona el repositorio:**
     ```bash
-    git clone <URL_DEL_REPOSITORIO>
-    cd nombre-del-repositorio # Reemplaza con el nombre real de tu carpeta
+    git clone https://codehatchinnovation.github.io/Portafolio-Web/
+    cd Portafolio-Web
     ```
 2.  **Abre `index.html`:** Simplemente abre el archivo `index.html` en tu navegador web preferido. No se necesita un servidor local para la funcionalidad básica.
 
