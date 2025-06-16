@@ -40,11 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Aplicación móvil desarrollada en Kotlin con Android Studio, orientada a facilitar la interacción entre psicólogos y sus pacientes. Incluye funciones de videollamada, envío de archivos y actividades interactivas. Aunque fue cancelada antes del lanzamiento por falta de financiamiento, el prototipo funcional demuestra experiencia en desarrollo móvil y manejo de flujos complejos de usuario.',
             languages: ['Kotlin', 'Android Studio'],
             images: [
-              'assets/images/projects/project1-full1.jpg' // Corregí la ruta a 'assets/images/projects/'
+              'assets/images/projects/project1-full1.jpg' // Ruta ajustada
             ],
-            liveDemo: '#', // No venía URL, lo dejo placeholder
-            github: '#', // Tampoco venía, placeholder
-            thumbnail: 'assets/images/projects/project1-thumb.jpg' // Corregí la ruta
+            liveDemo: '#',
+            github: '#',
+            thumbnail: 'assets/images/projects/project1-thumb.jpg' // Ruta ajustada
           },
           {
             id: 'project2',
@@ -123,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Renderizar Proyectos y Modal
     const projectsContainer = document.getElementById('projects-container');
+    // Asegúrate de que bootstrap.Modal esté disponible (verifica orden de scripts en HTML)
     const projectModal = new bootstrap.Modal(document.getElementById('projectModal'));
     const modalProjectTitle = document.getElementById('modal-project-title');
     const modalProjectDescription = document.getElementById('modal-project-description');
@@ -141,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
             swiperSlide.classList.add('swiper-slide');
             swiperSlide.dataset.projectId = project.id; // Para identificar el proyecto
 
-            // *** CORRECCIÓN CLAVE AQUÍ: Usar backticks (`) para el template literal ***
+            // *** CORRECCIÓN CLAVE: Usar backticks (`) para envolver todo el HTML ***
             swiperSlide.innerHTML = `
                 <img src="<span class="math-inline">\{project\.thumbnail\}" alt\="</span>{project.title}" class="project-thumbnail">
                 <div class="project-details">
@@ -158,8 +159,8 @@ document.addEventListener('DOMContentLoaded', () => {
             projectsContainer.appendChild(swiperSlide);
         });
 
-        // Añadir evento click a cada botón "Ver Detalles"
-        // Delegación de eventos para botones creados dinámicamente
+        // Añadir evento click a cada botón "Ver Detalles" (delegación de eventos)
+        // Se adjunta el listener al contenedor principal para manejar clics en elementos dinámicos
         document.querySelector('#projects-container').addEventListener('click', (event) => {
             if (event.target.classList.contains('view-project-btn')) {
                 const projectId = event.target.closest('.swiper-slide').dataset.projectId;
@@ -175,6 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalProjectTitle.textContent = project.title;
         modalProjectDescription.textContent = project.description;
 
+        // *** CORRECCIÓN: También aquí, usar backticks para el template literal ***
         modalLanguages.innerHTML = project.languages.map(lang => `<span class="language-badge">${lang}</span>`).join('');
         
         modalProjectImages.innerHTML = '';
@@ -204,9 +206,11 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProjects(); // Renderizar proyectos al cargar la página
 
     // 4. Inicialización de Swiper.js
-    // Esperar un pequeño momento para asegurar que los elementos se han añadido y el DOM se ha actualizado
+    // Añadir un pequeño retraso para asegurar que los slides estén en el DOM antes de inicializar Swiper
     setTimeout(() => {
-        if (projectsContainer && projectsContainer.children.length > 0) { // Solo inicializar si hay proyectos
+        const swiperContainerElement = document.querySelector('.swiper-container');
+        // Solo inicializar Swiper si el contenedor existe y tiene slides
+        if (swiperContainerElement && swiperContainerElement.querySelector('.swiper-wrapper').children.length > 0) {
             new Swiper('.swiper-container', {
                 slidesPerView: 1,
                 spaceBetween: 30,
@@ -236,9 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 },
             });
         } else {
-            console.warn('Swiper no se inicializó porque no se encontraron proyectos en el contenedor.');
+            console.warn('Swiper no se inicializó porque no se encontraron proyectos en el contenedor o el contenedor Swiper no existe.');
         }
-    }, 100); // Pequeño delay de 100ms
+    }, 100); // Pequeño delay de 100ms para asegurar el renderizado
 
     // 5. Funcionalidad del Chatbot
     const chatbotToggleButton = document.getElementById('chatbot-toggle-button');
@@ -266,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
-                e.preventDefault(); // Previene el salto de línea si el input es un textarea o similar
+                e.preventDefault(); // Previene el salto de línea o envío de formulario por defecto
                 sendMessage();
             }
         });
@@ -285,7 +289,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function displayMessage(message, sender) {
             const messageDiv = document.createElement('div');
-            // *** CORRECCIÓN CLAVE AQUÍ: Usar backticks (`) para el template literal en la clase ***
+            // *** CORRECCIÓN CLAVE: Usar backticks (`) para la cadena de clase en el chatbot ***
             messageDiv.classList.add('chat-message', `${sender}-message`);
             messageDiv.textContent = message;
             chatbotBody.appendChild(messageDiv);
