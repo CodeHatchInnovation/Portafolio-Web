@@ -101,11 +101,11 @@ document.addEventListener('DOMContentLoaded', () => {
             description: 'Página web desarrollada con HTML, CSS y JavaScript para un restaurante local. Incluye sistema de reservas con formulario automático, menú digital y un diseño adaptable para móviles. Enfocado en la experiencia del usuario y la conversión de visitantes en clientes.',
             languages: ['HTML', 'CSS', 'JavaScript'],
             images: [
-              'assets/images/projects/project6-full1.jpg'
+              'images/CE/CE1.png','images/CE/CE2.png','images/CE/CE3.png','images/CE/CE4.png','images/CE/CE5.png','images/CE/CE6.png','images/CE/CE7.png','images/CE/CE8.png','images/CE/CE9.png','images/CE/CE10.png'
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'assets/images/projects/project6-thumb.jpg'
+            thumbnail: 'assets/images/projects/CE1.png'
           },
           {
             id: 'project7',
