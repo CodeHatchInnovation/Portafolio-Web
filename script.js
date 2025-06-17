@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ],
             liveDemo: '#',
             github: '#',
-            thumbnail: 'assets/images/projects/CE1.png'
+            thumbnail: 'Images/CE/CE1.png'
           },
           {
             id: 'project7',
